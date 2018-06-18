@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SavedPage;
+use App\Collection;
 use Illuminate\Support\Facades\Storage;
 
 class HtmlDownloaderController extends Controller
 {
     public function index(){
-
-    	return view('main');
+    	$collections = Collection::all(['id', 'name_collection']);
+    	return view('main', compact('collections'));
     }
 
     public function handlerForm(Request $request){
@@ -41,7 +42,7 @@ class HtmlDownloaderController extends Controller
 	$contents = file_get_contents($url);
 	$name = hash_file('md5', $url);
 	Storage::put($name, $contents);
-    }//store file and get hash and size
+    }
 
     public static function getHashPage($validatedLink){
     	$url = $validatedLink['link'];

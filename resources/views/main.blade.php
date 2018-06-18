@@ -36,6 +36,35 @@
   </div>
   <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
-	</div>	
+	</div>
+
+    <div class="col-md-3 col-md-offset-4" style="margin-top: 50px">
+    <h3>Добавить коллекцию</h3>
+      <form method="post" action="{{ url('/handlerFormCollection') }}">
+  <div class="form-group">
+    {{csrf_field()}}
+    <label>Введите имя коллекции</label>
+    <input type="text" class="form-control" name="name_collection">
+  </div>
+  <button type="submit" class="btn btn-primary">Создать коллекцию</button>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      @foreach($collections as $item)
+      <td scope="row">{{$item->id}}</td>
+      <td><a href="{{action('CollectionController@editCollection',$item->id)}}">{{$item->name_collection}}</a></td>
+    </tr>
+@endforeach
+  </tbody>
+</table>
+  </div>
+
 </div>
 @endsection

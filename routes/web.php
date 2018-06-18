@@ -17,4 +17,7 @@
 
 Route::get('/','HtmlDownloaderController@index');
 Route::post('/handlerFormApp','ApplicationController@handlerFormApp');
+Route::post('/handlerFormCollection','CollectionController@handlerFormCollection');
 Route::post('/','HtmlDownloaderController@handlerForm');
+Route::get('/editcolllection/{id}','CollectionController@editCollection');
+Route::post('/editcolllection','CollectionController@storeCollection');
