@@ -48,6 +48,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Создать коллекцию</button>
 </form>
+<h2>Список коллекций</h2>
 <table class="table">
   <thead>
     <tr>
